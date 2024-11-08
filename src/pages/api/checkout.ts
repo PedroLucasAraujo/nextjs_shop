@@ -19,6 +19,8 @@ export default async function handler(
   const cancelUrl = `${process.env.NEXT_URL}/`;
 
   const checkoutSession = await stripe.checkout.sessions.create({
+    success_url: successUrl,
+    cancel_url: cancelUrl,
     mode: "payment",
     line_items: [
       {
@@ -26,9 +28,9 @@ export default async function handler(
         quantity: 1,
       },
     ],
-    success_url: successUrl,
-    cancel_url: cancelUrl,
   });
 
-  return res.status(201).json({ checkoutUrl: checkoutSession.url });
+  return res.status(201).json({
+    checkoutUrl: checkoutSession.url,
+  });
 }
