@@ -101,14 +101,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ---
 -->
 
-## ✍ Author
-
-<img alt="Perfil Github" title="Perfil Github" src="https://github.com/PabloXT14.png" width="100px" />
-
-[![Linkedin Badge](https://img.shields.io/badge/-Pablo_Alan-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pabloalan/)](https://www.linkedin.com/in/pabloalan/) 
-
-[![Gmail Badge](https://img.shields.io/badge/-pabloxt14@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:pabloxt14@gmail.com)](mailto:pabloxt14@gmail.com)
-
 ---
 
 ## 📝 License
