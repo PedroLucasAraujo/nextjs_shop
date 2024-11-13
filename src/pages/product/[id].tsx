@@ -1,5 +1,6 @@
 import {
   ImageContainer,
+  LoadingStateContainer,
   ProductContainer,
   ProductDetails,
 } from "../../styles/pages/product";
@@ -13,6 +14,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { useShoppingCart } from "use-shopping-cart";
 import { formatCurrency } from "../../utils/formatter";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
 
 interface ProductProps {
   product: {
@@ -31,7 +33,11 @@ export default function Product({ product }: ProductProps) {
   const { cartDetails } = useShoppingCart();
 
   if (isFallback) {
-    return <p>Carregando...</p>;
+    return (
+      <LoadingStateContainer>
+        <p>Carregando...</p>
+      </LoadingStateContainer>
+    );
   }
 
   async function handleBuyProduct() {
@@ -57,6 +63,7 @@ export default function Product({ product }: ProductProps) {
       <Head>
         <title>{product.name} | Ignite Shop</title>
       </Head>
+
       <ProductContainer>
         <ImageContainer>
           <Image

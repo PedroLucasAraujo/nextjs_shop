@@ -14,6 +14,13 @@ export const ProductContainer = styled("main", {
   },
 });
 
+export const LoadingStateContainer = styled("main", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100vh",
+});
+
 export const ImageContainer = styled("div", {
   width: "100%",
   maxWidth: 576,
