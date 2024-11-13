@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useState } from "react";
 import Head from "next/head";
+import { useShoppingCart } from "use-shopping-cart";
 
 interface ProductProps {
   product: {
@@ -26,6 +27,7 @@ export default function Product({ product }: ProductProps) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] =
     useState(false);
   const { isFallback } = useRouter();
+  const { cartDetails } = useShoppingCart();
 
   if (isFallback) {
     return <p>Carregando...</p>;
@@ -36,7 +38,7 @@ export default function Product({ product }: ProductProps) {
       setIsCreatingCheckoutSession(true);
 
       const response = await axios.post("/api/checkout", {
-        priceId: product.defaultPriceId,
+        products: cartDetails,
       });
 
       const { checkoutUrl } = response.data;
@@ -99,20 +101,20 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
 
   const price = product.default_price as Stripe.Price;
 
+  const hourInSeconds = 60 * 60;
+  const revalidateTimeInSeconds = hourInSeconds * 2;
+
   return {
     props: {
       product: {
         id: product.id,
         name: product.name,
         imageUrl: product.images[0],
-        price: new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }).format(price.unit_amount / 100),
+        price: price.unit_amount,
         description: product.description,
         defaultPriceId: price.id,
       },
     },
-    revalidate: 60 * 60 * 1, // 1 hours
+    revalidate: revalidateTimeInSeconds,
   };
 };

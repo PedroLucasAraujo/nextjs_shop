@@ -1,15 +1,13 @@
 import Image from "next/future/image";
 import Link from "next/link";
 import Head from "next/head";
-
 import { useKeenSlider } from "keen-slider/react";
-
 import { HomeContainer, Product } from "../styles/pages/home";
-
 import "keen-slider/keen-slider.min.css";
 import { stripe } from "../lib/stripe";
 import type { GetStaticProps } from "next";
 import type Stripe from "stripe";
+import { useShoppingCart } from "use-shopping-cart";
 
 interface HomeProps {
   products: {
@@ -20,12 +18,18 @@ interface HomeProps {
   }[];
 }
 export default function Home({ products }: HomeProps) {
+  const { addItem, cartDetails } = useShoppingCart();
+  console.log(cartDetails, "cartDetails");
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
       spacing: 48,
     },
   });
+
+  const handleAddToCart = async (product) => {
+    addItem(product);
+  };
 
   return (
     <>
@@ -44,8 +48,17 @@ export default function Home({ products }: HomeProps) {
                 <Image src={product.imageUrl} width={520} height={480} alt="" />
 
                 <footer>
-                  <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <div>
+                    <strong>{product.name}</strong>
+                    <span>{product.price}</span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      handleAddToCart(product);
+                    }}
+                  >
+                    Add
+                  </button>
                 </footer>
               </Product>
             </Link>
@@ -58,29 +71,28 @@ export default function Home({ products }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
-    expand: ["data.default_price"],
+    expand: ["data.default_price"], // como o <price> dos produtos não vem por padrão (pois este dado esta na relação da tabela de produtos com alguma tabela de prices) dizemos para a api do stripe retornar nos produtos dentro do objeto <default_price> o price para cada produto
   });
 
   const products = response.data.map((product) => {
-    const price = product.default_price as Stripe.Price;
+    const price = product.default_price as Stripe.Price; // tipando preço do produto
 
     return {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      }).format(price.unit_amount / 100),
+      price: price.unit_amount,
+      defaultPriceId: price.id,
     };
   });
 
-  console.log(products);
+  const hourInSeconds = 60 * 60;
+  const revalidateTimeInSeconds = hourInSeconds * 2;
 
   return {
     props: {
       products,
     },
-    revalidate: 60 * 60 * 2, // 2 hours
+    revalidate: revalidateTimeInSeconds,
   };
 };

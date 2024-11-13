@@ -67,6 +67,7 @@ export const ProductDetails = styled("div", {
 
     "&:not(:disabled):hover": {
       backgroundColor: "$green300",
+      transition: "all 0.2s ease-in-out",
     },
   },
 });
