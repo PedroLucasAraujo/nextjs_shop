@@ -2,12 +2,18 @@ import Image from "next/future/image";
 import Link from "next/link";
 import Head from "next/head";
 import { useKeenSlider } from "keen-slider/react";
-import { HomeContainer, Product } from "../styles/pages/home";
+import {
+  CardProductDetails,
+  HomeContainer,
+  Product,
+} from "../styles/pages/home";
 import "keen-slider/keen-slider.min.css";
 import { stripe } from "../lib/stripe";
 import type { GetStaticProps } from "next";
 import type Stripe from "stripe";
 import { useShoppingCart } from "use-shopping-cart";
+import { formatCurrency } from "../utils/formatter";
+import shelfMinicartIcon from "../assets/shelf-minicart.svg";
 
 interface HomeProps {
   products: {
@@ -34,7 +40,7 @@ export default function Home({ products }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Home |Ignite Shop</title>
+        <title>Home | Ignite Shop</title>
       </Head>
       <HomeContainer ref={sliderRef} className="keen-slider">
         {products.map((product) => {
@@ -48,16 +54,21 @@ export default function Home({ products }: HomeProps) {
                 <Image src={product.imageUrl} width={520} height={480} alt="" />
 
                 <footer>
-                  <div>
+                  <CardProductDetails>
                     <strong>{product.name}</strong>
-                    <span>{product.price}</span>
-                  </div>
+                    <span>{formatCurrency(Number(product.price) / 100)}</span>
+                  </CardProductDetails>
                   <button
                     onClick={() => {
                       handleAddToCart(product);
                     }}
                   >
-                    Add
+                    <Image
+                      src={shelfMinicartIcon}
+                      width={32}
+                      height={32}
+                      alt="Add to Cart"
+                    />
                   </button>
                 </footer>
               </Product>

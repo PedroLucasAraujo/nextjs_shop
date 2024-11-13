@@ -18,3 +18,7 @@ export const Header = styled("header", {
   maxWidth: 1180,
   margin: "0 auto",
 });
+
+export const HeaderLink = styled("a", {
+  textDecoration: "none",
+});

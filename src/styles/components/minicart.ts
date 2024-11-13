@@ -100,6 +100,8 @@ export const SidebarContent = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
+  justifyContent: "center",
+  height: "100%",
 
   h2: {
     margin: "28px 0 32px",
@@ -202,6 +204,7 @@ export const SidebarFooter = styled("div", {
   alignItems: "center",
   gap: "4rem",
   paddingTop: "24px",
+  marginTop: "auto",
 
   table: {
     width: "100%",
@@ -254,5 +257,22 @@ export const SidebarFooter = styled("div", {
       backgroundColor: "$green300",
       transition: "all 0.1s ease-in-out",
     },
+  },
+});
+
+export const EmptyCartMessageWrapper = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "1rem",
+
+  p: {
+    color: "$gray300",
+    fontSize: "1.125rem",
+    fontWeight: 400,
+    lineHeight: 1.6,
+    textAlign: "center",
+    maxWidth: 560,
   },
 });

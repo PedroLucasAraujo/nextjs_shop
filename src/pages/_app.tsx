@@ -3,7 +3,7 @@ import { globalStyles } from "../styles/global";
 
 import logoImg from "../assets/logo.svg";
 
-import { Container, Header } from "../styles/pages/app";
+import { Container, Header, HeaderLink } from "../styles/pages/app";
 
 import Image from "next/future/image";
 import { Minicart } from "../components/Minicart/index";
@@ -24,7 +24,10 @@ function App({ Component, pageProps }: AppProps) {
     >
       <Container>
         <Header>
-          <Image src={logoImg} alt="" />
+          <HeaderLink href="/">
+            <Image src={logoImg} alt="" />
+          </HeaderLink>
+
           <Minicart />
         </Header>
 

@@ -12,6 +12,7 @@ import axios from "axios";
 import { useState } from "react";
 import Head from "next/head";
 import { useShoppingCart } from "use-shopping-cart";
+import { formatCurrency } from "../../utils/formatter";
 
 interface ProductProps {
   product: {
@@ -67,7 +68,7 @@ export default function Product({ product }: ProductProps) {
         </ImageContainer>
         <ProductDetails>
           <h1>{product.name}</h1>
-          <span>{product.price}</span>
+          <span>{formatCurrency(Number(product.price) / 100)}</span>
 
           <p>{product.description}</p>
 

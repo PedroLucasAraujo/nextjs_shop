@@ -52,6 +52,20 @@ export const Product = styled("div", {
       fontWeight: "bold",
       color: "$green300",
     },
+
+    button: {
+      width: 56,
+      height: 56,
+      background: "$green500",
+      border: 0,
+      borderRadius: 6,
+      cursor: "pointer",
+      transition: "all 0.2s ease-in-out",
+
+      "&:hover": {
+        background: "$green300",
+      },
+    },
   },
 
   "&:hover": {
@@ -60,4 +74,10 @@ export const Product = styled("div", {
       opacity: 1,
     },
   },
+});
+
+export const CardProductDetails = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
 });
