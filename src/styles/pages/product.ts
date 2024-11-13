@@ -7,6 +7,11 @@ export const ProductContainer = styled("main", {
   gap: "4rem",
   maxWidth: 1180,
   margin: "0 auto",
+
+  "@media(max-width: 1250px)": {
+    gridTemplateColumns: "1fr",
+    padding: "0 2rem",
+  },
 });
 
 export const ImageContainer = styled("div", {
@@ -23,6 +28,16 @@ export const ImageContainer = styled("div", {
 
   img: {
     objectFit: "cover",
+
+    "@media(max-width: 1250px)": {
+      width: "100%",
+      height: "auto",
+    },
+  },
+
+  "@media(max-width: 1250px)": {
+    width: "100%",
+    height: "auto",
   },
 });
 
@@ -58,6 +73,7 @@ export const ProductDetails = styled("div", {
     padding: "1.25rem",
     cursor: "pointer",
     fontWeight: "bold",
+    height: 69,
     fontSize: "$md",
 
     "&:disabled": {
@@ -68,6 +84,10 @@ export const ProductDetails = styled("div", {
     "&:not(:disabled):hover": {
       backgroundColor: "$green300",
       transition: "all 0.2s ease-in-out",
+    },
+
+    "@media(max-width: 1250px)": {
+      margin: "2rem 0 4rem",
     },
   },
 });

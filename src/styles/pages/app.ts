@@ -17,6 +17,10 @@ export const Header = styled("header", {
   width: "100%",
   maxWidth: 1180,
   margin: "0 auto",
+
+  "@media(max-width: 1250px)": {
+    padding: "2rem",
+  },
 });
 
 export const HeaderLink = styled("a", {

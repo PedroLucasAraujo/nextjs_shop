@@ -70,7 +70,7 @@ export const SidebarWrapper = styled(Dialog.Content, {
   top: 0,
   right: 0,
   height: "100%",
-  width: 480, // Ajuste conforme necessário
+  width: 480,
   backgroundColor: "$gray800",
   boxShadow: "-2px 0 10px rgba(0, 0, 0, 0.1)",
   overflowY: "auto",
@@ -81,6 +81,10 @@ export const SidebarWrapper = styled(Dialog.Content, {
   animation: `${slideIn} 300ms ease-out`,
   '&[data-state="closed"]': {
     animation: `${slideOut} 300ms ease-in`,
+  },
+
+  "@media(max-width: 1250px)": {
+    width: "100%",
   },
 });
 

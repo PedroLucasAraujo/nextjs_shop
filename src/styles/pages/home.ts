@@ -66,6 +66,11 @@ export const Product = styled("div", {
         background: "$green300",
       },
     },
+
+    "@media(max-width: 1250px)": {
+      transform: "translateY(0%)",
+      opacity: 1,
+    },
   },
 
   "&:hover": {

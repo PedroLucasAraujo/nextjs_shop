@@ -25,11 +25,30 @@ interface HomeProps {
 }
 export default function Home({ products }: HomeProps) {
   const { addItem, cartDetails } = useShoppingCart();
-  console.log(cartDetails, "cartDetails");
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
       spacing: 48,
+    },
+    breakpoints: {
+      "(max-width: 1200px)": {
+        slides: {
+          perView: 2,
+          spacing: 48,
+        },
+      },
+      "(max-width: 1000px)": {
+        slides: {
+          perView: 1.5,
+          spacing: 48,
+        },
+      },
+      "(max-width: 800px)": {
+        slides: {
+          perView: 1,
+          spacing: 48,
+        },
+      },
     },
   });
 
