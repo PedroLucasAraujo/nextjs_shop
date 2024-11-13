@@ -24,27 +24,6 @@ O projeto foi desenvolvido como conclusão de um desafio do curso **Ignite** ofe
 
 ---
 
-## 🎨 Layout
-
-Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/FxlDRKOmznBbTH8DsTgnZU/Ignite-Shop-2.0/duplicate). É necessário ter conta no [Figma](https://www.figma.com/) para acessá-lo.
-
-### Web
-
-<p align="center">
-  <img alt="Animated Web Demonstration" title="#Web" src=".github/ignite_shop-demonstration_01.gif" width="100%">
-</p>
-<p align="center">
-  <img alt="Animated Web Demonstration" title="#Web" src=".github/ignite_shop-demonstration_02.gif" width="100%">
-</p>
-
----
-
-## 🔗 Deploy
-
-Para acessar o deploy do Website da aplicação basta clicar no link a seguir: [Link](https://ignite-shop-kappa.vercel.app/)
-
----
-
 ## 🚀 How it works
 
 Este projeto contem somente a parte Frontend Web, precisando somente executar a aplicação em seu Browser(navegador).
